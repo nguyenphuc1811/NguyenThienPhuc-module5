@@ -1,0 +1,16 @@
+<h2>Calculate</h2>
+<label>
+  Number 1:
+  <input type="text" #number1 (change)="calculation(number1.value,number2.value,operator.value)">
+</label>
+<select #operator (change)="calculation(number1.value,number2.value,operator.value)">
+  <option value="+">+</option>
+  <option value="-">-</option>
+  <option value="*">*</option>
+  <option value="/">/</option>
+</select>
+<label>
+  Number 2:
+  <input type="text" #number2 (change)="calculation(number1.value,number2.value,operator.value)">
+</label>
+<h3>{{result}}</h3>
