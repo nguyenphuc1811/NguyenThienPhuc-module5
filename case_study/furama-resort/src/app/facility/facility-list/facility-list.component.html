@@ -1,0 +1,39 @@
+<table class="table table-striped table-hover" style="--bs-table-hover-bg: lightblue">
+  <thead>
+  <tr class="bg-dark text-light">
+    <th scope="col">STT</th>
+    <th scope="col">Name</th>
+    <th scope="col">Area</th>
+    <th scope="col">Cost</th>
+    <th scope="col">Max People</th>
+    <th scope="col">Facility Type</th>
+    <th scope="col">Rent Type</th>
+    <th scope="col">StandardRoom</th>
+    <th scope="col">Description</th>
+    <th scope="col">Pool Area</th>
+    <th scope="col">Floor</th>
+    <th scope="col">FacilityFree</th>
+    <th scope="col">Edit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of facilityList,index as i ">
+    <td>{{i + 1}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.area}}</td>
+    <td>{{item.cost}}</td>
+    <td>{{item.maxPeople}}</td>
+    <td>{{item.facilityType.name}}</td>
+    <td>{{item.rentType.name}}</td>
+    <td>{{item.standardRoom}}</td>
+    <td>{{item.description}}</td>
+    <td>{{item.poolArea}}</td>
+    <td>{{item.floor}}</td>
+    <td>{{item.facilityFree}}</td>
+    <td>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit" (click)="edit(item)">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<app-facility-edit [facility]="facility" ></app-facility-edit>
