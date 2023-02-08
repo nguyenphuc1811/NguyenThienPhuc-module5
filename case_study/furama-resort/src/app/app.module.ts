@@ -8,6 +8,8 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { FacilityListComponent } from './facility/facility-list/facility-list.component';
 import { FacilityEditComponent } from './facility/facility-edit/facility-edit.component';
 import {FormsModule} from '@angular/forms';
+import { FacilityAddComponent } from './facility/facility-add/facility-add.component';
+import { CustomerComponent } from './customer/customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import {FormsModule} from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     FacilityListComponent,
-    FacilityEditComponent
+    FacilityEditComponent,
+    FacilityAddComponent,
+    CustomerComponent
   ],
     imports: [
         BrowserModule,
