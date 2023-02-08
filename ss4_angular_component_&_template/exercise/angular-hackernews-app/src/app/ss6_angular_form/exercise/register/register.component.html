@@ -1,0 +1,33 @@
+<form [formGroup]="customerForm" (ngSubmit)="createCustomer()">
+  Email:
+  <input type="text" formControlName="email" name="email">
+  <p *ngIf="customerForm.controls.email.hasError('pattern') && customerForm.controls.email.dirty">Nhập đúng định
+    dạng : xxx@xxx.xxx</p>
+  <div formGroupName="passwordGr">
+    Password:
+    <input type="text" formControlName="password" name="password">
+    <p
+      *ngIf="customerForm.get('passwordGr').get('password').hasError('minlength') || customerForm.get('passwordGr').get('password').hasError('maxlength')">
+      Password phải hơn 6 chữ và nhỏ hơn 30 </p>
+    Confirm Password:
+    <input type="text" formControlName="confirm" name="confirm">
+    <p *ngIf="customerForm.controls.passwordGr.hasError('invalidPassword')">Mật khẩu không trùng</p>
+  </div>
+  Country:
+  <input type="text" formControlName="country" name="country">
+  Age:
+  <input type="text" formControlName="age" name="age">
+  <p
+    *ngIf="customerForm.controls.age.hasError('min') && customerForm.controls.age.hasError('max') && customerForm.controls.age.dirty"></p>
+  Gender:
+  <p *ngIf="customerForm.controls.gender.hasError('required')">Không được để trống</p>
+  Male:
+  <input type="radio" formControlName="gender" name="gender" value="true" checked>
+  Famale:
+  <input type="radio" formControlName="gender" name="gender" value="false">
+  Phone:
+  <input type="text" formControlName="phone" name="phone">
+  <p *ngIf="customerForm.controls.phone.hasError('pattern') && customerForm.controls.phone.dirty">Nhập đúng định dạng
+    +84(9 | 10) số</p>
+  <button type="submit">Save</button>
+</form>
