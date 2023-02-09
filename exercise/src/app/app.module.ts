@@ -7,7 +7,9 @@ import { ProductListComponent } from './ss7_service_&_router/manager_product/pro
 import { ProductCreateComponent } from './ss7_service_&_router/manager_product/product-create/product-create.component';
 import { ProductEditComponent } from './ss7_service_&_router/manager_product/product-edit/product-edit.component';
 import { ProductDeleteComponent } from './ss7_service_&_router/manager_product/product-delete/product-delete.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DictionaryDetailComponent } from './ss7_service_&_router/dictionary/dictionary-detail/dictionary-detail.component';
+import { DictionaryPageComponent } from './ss7_service_&_router/dictionary/dictionary-page/dictionary-page.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,16 @@ import {ReactiveFormsModule} from '@angular/forms';
     ProductListComponent,
     ProductCreateComponent,
     ProductEditComponent,
-    ProductDeleteComponent
+    ProductDeleteComponent,
+    DictionaryDetailComponent,
+    DictionaryPageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

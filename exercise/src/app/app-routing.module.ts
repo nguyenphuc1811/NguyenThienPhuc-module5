@@ -3,9 +3,19 @@ import {ProductListComponent} from './ss7_service_&_router/manager_product/produ
 import {ProductCreateComponent} from './ss7_service_&_router/manager_product/product-create/product-create.component';
 import {ProductEditComponent} from './ss7_service_&_router/manager_product/product-edit/product-edit.component';
 import {NgModule} from '@angular/core';
+import {DictionaryPageComponent} from './ss7_service_&_router/dictionary/dictionary-page/dictionary-page.component';
+import {DictionaryDetailComponent} from './ss7_service_&_router/dictionary/dictionary-detail/dictionary-detail.component';
 
 
 const routes: Routes = [
+  {
+    path: 'word',
+    component: DictionaryPageComponent
+  }
+  , {
+    path: 'word/:word',
+    component: DictionaryDetailComponent
+  },
   {
     path: 'product',
     component: ProductListComponent
