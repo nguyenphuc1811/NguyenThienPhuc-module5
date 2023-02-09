@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Customer} from "../../model/customer/customer";
+import {CustomerService} from "../../service/customer.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-customer',
@@ -7,19 +9,17 @@ import {Customer} from "../../model/customer/customer";
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  customerList: Customer[] = [
-    {
-      id: 1,
-      name: 'abc'
-    },
-    {
-      id: 2,
-      name: '123'
-    }
-  ]
-  constructor() { }
+  customer: Customer;
+  customerForm: FormGroup = new FormGroup({
+    id: new FormControl(),
+    name: new FormControl(),
+  })
+
+  constructor(private customerService: CustomerService) {
+  }
 
   ngOnInit(): void {
+    this.customerService.getAll();
   }
 
 }
