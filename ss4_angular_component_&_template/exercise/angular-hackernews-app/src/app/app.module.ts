@@ -14,6 +14,12 @@ import { RatingBarComponentComponent } from './ss5_components_interaction/exerci
 import { CountdownTimerComponent } from './ss5_components_interaction/exercise/countdown-timer/countdown-timer.component';
 import { TodoComponent } from './ss6_angular_form/practice/todo/todo.component';
 import { RegisterComponent } from './ss6_angular_form/exercise/register/register.component';
+import { ProductCreateComponent } from './ss7_service_&_router/exercise/manager_product/product-create/product-create.component';
+import { ProductListComponent } from './ss7_service_&_router/exercise/manager_product/product-list/product-list.component';
+import { DictionayPageComponent } from './ss7_service_&_router/exercise/lookup_dictionary/dictionay-page/dictionay-page.component';
+import { DictionaryDetailComponent } from './ss7_service_&_router/exercise/lookup_dictionary/dictionary-detail/dictionary-detail.component';
+import { ProductEditComponent } from './ss7_service_&_router/exercise/manager_product/product-edit/product-edit.component';
+import { ProductDeleteComponent } from './ss7_service_&_router/exercise/manager_product/product-delete/product-delete.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,13 @@ import { RegisterComponent } from './ss6_angular_form/exercise/register/register
     RatingBarComponentComponent,
     CountdownTimerComponent,
     TodoComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductCreateComponent,
+    ProductListComponent,
+    DictionayPageComponent,
+    DictionaryDetailComponent,
+    ProductEditComponent,
+    ProductDeleteComponent
   ],
     imports: [
         BrowserModule,
