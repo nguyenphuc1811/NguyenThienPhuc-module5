@@ -6,11 +6,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-<!--        Bạn có muốn xóa <span class="text-danger">{{product.name}}</span>-->
+        Bạn có muốn xóa <span>{{product.name}}</span> ?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-<!--        <button type="button" class="btn btn-primary" (click)="delete(product.id)">Save changes</button>-->
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="delete(product.id)">Delete
+        </button>
       </div>
     </div>
   </div>

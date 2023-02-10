@@ -5,6 +5,9 @@ import {ProductEditComponent} from './ss7_service_&_router/manager_product/produ
 import {NgModule} from '@angular/core';
 import {DictionaryPageComponent} from './ss7_service_&_router/dictionary/dictionary-page/dictionary-page.component';
 import {DictionaryDetailComponent} from './ss7_service_&_router/dictionary/dictionary-detail/dictionary-detail.component';
+import {ListJsonComponent} from './ss7_service_&_router/manager_product/ss9_connect_with_db/list-json/list-json.component';
+import {CreateJsonComponent} from './ss7_service_&_router/manager_product/ss9_connect_with_db/create-json/create-json.component';
+import {JsonEditComponent} from './ss7_service_&_router/manager_product/ss9_connect_with_db/json-edit/json-edit.component';
 
 
 const routes: Routes = [
@@ -26,6 +29,17 @@ const routes: Routes = [
   {
     path: 'product/edit/:id',
     component: ProductEditComponent
+  },
+  {
+    path: 'products/products',
+    component: ListJsonComponent
+  }, {
+    path: 'products/create',
+    component: CreateJsonComponent
+  },
+  {
+    path: 'products/products/editJson/:id',
+    component: JsonEditComponent
   }
 ];
 

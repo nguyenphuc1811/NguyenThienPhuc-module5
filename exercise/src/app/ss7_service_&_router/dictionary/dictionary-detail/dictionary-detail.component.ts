@@ -9,7 +9,7 @@ import {DictionaryService} from '../dictionary.service';
 })
 export class DictionaryDetailComponent implements OnInit {
 
-  mean?: string;
+  mean = '';
 
   constructor(private activatedRoute: ActivatedRoute, private dictionaryService: DictionaryService) {
     activatedRoute.paramMap.subscribe(param => {

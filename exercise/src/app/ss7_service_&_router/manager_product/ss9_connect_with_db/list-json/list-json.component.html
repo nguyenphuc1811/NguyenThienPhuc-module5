@@ -16,16 +16,8 @@
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
     <td>
-      <button [routerLink]="['edit',product.id]">edit</button>
-    </td>
-    <td>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-              (click)="delete(product)">
-        Delete
-      </button>
+      <button type="button" [routerLink]="['editJson' ,product.id]">Edit</button>
     </td>
   </tr>
   </tbody>
 </table>
-<app-product-delete [product]="product"></app-product-delete>
-

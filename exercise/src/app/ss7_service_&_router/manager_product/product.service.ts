@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Product} from './product';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Category} from './category';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
-  constructor() {
-  }
-
   products: Product[] = [{
     id: 1,
     name: 'IPhone 12',
@@ -35,6 +34,29 @@ export class ProductService {
     price: 1895000,
     description: 'Like new'
   }];
+
+  constructor(private httpClient: HttpClient) {
+  }
+
+  finByIdJson(id: number) {
+    return this.httpClient.get('http://localhost:3000/products/' + id);
+  }
+
+  getAllToServer(): Observable<Product[]> {
+    return this.httpClient.get<(Product[])>('http://localhost:3000/products');
+  }
+
+  getCategory(): Observable<Category[]> {
+    return this.httpClient.get<(Category[])>('http://localhost:3000/categories');
+  }
+
+  addProduct(event: any) {
+    return this.httpClient.post('http://localhost:3000/products', event);
+  }
+
+  deleteProductJson(event: any) {
+    return this.httpClient.delete('http://localhost:3000/products', event);
+  }
 
   getAll() {
     return this.products;
@@ -69,4 +91,7 @@ export class ProductService {
     }
   }
 
+  editProductJson(product: Product) {
+    return this.httpClient.put('http://localhost:3000/products/' + product.id, product);
+  }
 }
