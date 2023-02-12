@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Customer} from "../model/customer/customer";
+import {Customer} from '../model/customer/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,12 @@ export class CustomerService {
       id: 2,
       name: '123'
     }
-  ]
+  ];
 
   constructor() {
   }
 
-  getAll(){
+  getAll() {
     return this.customerList;
   }
 }
