@@ -54,8 +54,16 @@ export class ProductService {
     return this.httpClient.post('http://localhost:3000/products', event);
   }
 
-  deleteProductJson(event: any) {
-    return this.httpClient.delete('http://localhost:3000/products', event);
+  deleteProductJson(id: number) {
+    return this.httpClient.delete('http://localhost:3000/products/' + id);
+  }
+
+  searchProduct(id: number, name: string) {
+    if (id === 0) {
+      return this.httpClient.get<(Product[])>('http://localhost:3000/products?name_like=' + name);
+    } else {
+      return this.httpClient.get<(Product[])>('http://localhost:3000/products?name_like=' + name + '&category.id=' + id);
+    }
   }
 
   getAll() {

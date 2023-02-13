@@ -11,9 +11,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DictionaryDetailComponent} from './ss7_service_&_router/dictionary/dictionary-detail/dictionary-detail.component';
 import {DictionaryPageComponent} from './ss7_service_&_router/dictionary/dictionary-page/dictionary-page.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ListJsonComponent} from './ss7_service_&_router/manager_product/ss9_connect_with_db/list-json/list-json.component';
-import { CreateJsonComponent } from './ss7_service_&_router/manager_product/ss9_connect_with_db/create-json/create-json.component';
-import { JsonEditComponent } from './ss7_service_&_router/manager_product/ss9_connect_with_db/json-edit/json-edit.component';
+import {ListJsonComponent} from './ss9_connect_with_db/list-json/list-json.component';
+import {CreateJsonComponent} from './ss9_connect_with_db/create-json/create-json.component';
+import {JsonEditComponent} from './ss9_connect_with_db/json-edit/json-edit.component';
+import {DeleleJsonComponent} from './ss9_connect_with_db/delele-json/delele-json.component';
+import {CategoryComponent} from './ss8_modules_&_di/category/category.component';
+import {NavBarComponent} from './ss8_modules_&_di/shared/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { JsonEditComponent } from './ss7_service_&_router/manager_product/ss9_co
     ListJsonComponent,
     CreateJsonComponent,
     JsonEditComponent,
+    DeleleJsonComponent,
+    CategoryComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

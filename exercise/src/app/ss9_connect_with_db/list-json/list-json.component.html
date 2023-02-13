@@ -1,0 +1,36 @@
+<h1>Danh sách sản phẩm</h1>
+<input type="text" #search>
+<select #category>
+  <option value='0' selected>Category</option>
+  <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+</select>
+<button (click)="searchProduct(category.value,search.value)">search</button>
+<table>
+  <thead>
+  <tr>
+    <td>STT</td>
+    <td>Tên</td>
+    <td>Giá</td>
+    <td>Mô tả</td>
+    <td>Edit</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.description}}</td>
+    <td>
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="delete(product)">
+        Delete
+      </button>
+    </td>
+    <td>
+      <button type="button" [routerLink]="['editJson' ,product.id]">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<app-delele-json [product]="product"></app-delele-json>

@@ -1,4 +1,5 @@
-import {CustomerType} from "./customer-type";
+import {CustomerType} from './customer-type';
+
 
 export interface Customer {
   id?: number;

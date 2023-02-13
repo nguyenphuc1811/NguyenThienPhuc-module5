@@ -5,8 +5,9 @@
   <div class="col col-md-auto col-lg-3 d-flex">
     <div class="catalog-widget d-none d-sm-block">
       <div class="catalog-widget-inside" style="visibility: visible;">
-        <a href="https://www.tripadvisor.com/Hotel_Review-g298085-d302750-Reviews-Furama_Resort_Danang-Da_Nang_Quang_Nam_Province.html"
-           target="_blank">
+        <a
+          href="https://www.tripadvisor.com/Hotel_Review-g298085-d302750-Reviews-Furama_Resort_Danang-Da_Nang_Quang_Nam_Province.html"
+          target="_blank">
           <div class="widget-tripadvisor">
             <div class="inside">
               <div class="widget-tripadvisor-logo"><img
@@ -62,19 +63,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="view/home.jsp">Home</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['/product']">Product</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="">Employee</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/customer">Customer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/facility">Service</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/contract">Contract</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['/category']" href="">category</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -84,3 +76,4 @@
     </div>
   </div>
 </nav>
+

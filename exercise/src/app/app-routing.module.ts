@@ -5,9 +5,11 @@ import {ProductEditComponent} from './ss7_service_&_router/manager_product/produ
 import {NgModule} from '@angular/core';
 import {DictionaryPageComponent} from './ss7_service_&_router/dictionary/dictionary-page/dictionary-page.component';
 import {DictionaryDetailComponent} from './ss7_service_&_router/dictionary/dictionary-detail/dictionary-detail.component';
-import {ListJsonComponent} from './ss7_service_&_router/manager_product/ss9_connect_with_db/list-json/list-json.component';
-import {CreateJsonComponent} from './ss7_service_&_router/manager_product/ss9_connect_with_db/create-json/create-json.component';
-import {JsonEditComponent} from './ss7_service_&_router/manager_product/ss9_connect_with_db/json-edit/json-edit.component';
+import {ListJsonComponent} from './ss9_connect_with_db/list-json/list-json.component';
+import {CreateJsonComponent} from './ss9_connect_with_db/create-json/create-json.component';
+import {JsonEditComponent} from './ss9_connect_with_db/json-edit/json-edit.component';
+import {DeleleJsonComponent} from './ss9_connect_with_db/delele-json/delele-json.component';
+import {CategoryComponent} from './ss8_modules_&_di/category/category.component';
 
 
 const routes: Routes = [
@@ -40,6 +42,13 @@ const routes: Routes = [
   {
     path: 'products/products/editJson/:id',
     component: JsonEditComponent
+  }, {
+    path: 'products/products/deleteJson/:id',
+    component: DeleleJsonComponent
+  },
+  {
+    path: 'category',
+    component: CategoryComponent
   }
 ];
 
