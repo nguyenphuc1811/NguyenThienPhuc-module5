@@ -7,6 +7,8 @@ import com.codegym.exam_be.service.IPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +46,11 @@ public class PatientRestController {
     }
 
     @PostMapping("/patient/add")
-    public ResponseEntity<?> addPatient(@RequestBody Patient patient) {
+    public ResponseEntity<?> addPatient(@Validated @RequestBody Patient patient, BindingResult bindingResult) {
+        patient.validate(patient, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         patientService.addPatient(patient.getMedicalCode(), patient.getPatientCode(), patient.getName(), patient.getStartDay(), patient.getEndDay(), patient.getReason(), patient.getSolution(), patient.getDoctor().getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }

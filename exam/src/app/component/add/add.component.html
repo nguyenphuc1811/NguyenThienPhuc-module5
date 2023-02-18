@@ -1,15 +1,16 @@
 <div class="bg-body">
   <h2 class="text-capitalize text-center text-success">Thêm mới bệnh nhân</h2>
+  <p class="text-danger">{{messError}}</p>
   <form class="form-control justify-content-center" [formGroup]="patientForm" (ngSubmit)="add()">
     <div class="row m-2">
       <label class="col-2 col-form-label">Mã bệnh án: </label>
       <input class="col-5 form-control" type="text" formControlName="medicalCode">
-      <span class="text-danger" *ngIf="patientForm.controls.medicalCode.hasError('required')" >Không được để trống</span>
+      <span class="text-danger" *ngIf="patientForm.controls.medicalCode.hasError('required')">Không được để trống</span>
     </div>
     <div class="row m-2">
       <label class="col-2 col-form-label">Mã bệnh nhân: </label>
       <input class="col-5 form-control" type="text" formControlName="patientCode">
-      <span class="text-danger" *ngIf="patientForm.controls.patientCode.hasError('required')" >Không được để trống</span>
+      <span class="text-danger" *ngIf="patientForm.controls.patientCode.hasError('required')">Không được để trống</span>
     </div>
     <div class="row m-2">
       <label class="col-2 col-form-label">Tên Bệnh nhân:
@@ -26,27 +27,28 @@
       <label class="col-2 col-form-label">Ngày kết thúc: </label>
       <input class="col-5 form-control" type="date" formControlName="endDay">
       <span class="text-danger" *ngIf="patientForm.controls.endDay.hasError('pattern')">Sai định dạng</span>
-      <span class="text-danger" *ngIf="patientForm.hasError('invalidDate')">Ngày kết thúc phải lớn hơn ngày bắt đầu</span>
+      <span class="text-danger"
+            *ngIf="patientForm.hasError('invalidDate')">Ngày kết thúc phải lớn hơn ngày bắt đầu</span>
     </div>
     <div class="row m-2">
       <label class="col-2 col-form-label">Lý do nhập viện: </label>
       <input class="col-5 form-control" type="text" formControlName="reason">
-      <span class="text-danger" *ngIf="patientForm.controls.reason.hasError('required')" >Không được để trống</span>
+      <span class="text-danger" *ngIf="patientForm.controls.reason.hasError('required')">Không được để trống</span>
     </div>
     <div class="row m-2">
       <label class="col-2 col-form-label">Phương phá điều trị: </label>
       <input class="col-5 form-control" type="text" formControlName="solution">
-      <span class="text-danger" *ngIf="patientForm.controls.solution.hasError('required')" >Không được để trống</span>
+      <span class="text-danger" *ngIf="patientForm.controls.solution.hasError('required')">Không được để trống</span>
     </div>
     <div class="row m-2">
       <label class="col-2 col-form-label">Bác sĩ</label>
       <select class="form-select-sm" formControlName="doctor" [compareWith]="compareFn">
-        <option *ngFor="let doctor of doctors" [ngValue]="doctor" >{{doctor.name}}</option>
+        <option *ngFor="let doctor of doctors" [ngValue]="doctor">{{doctor.name}}</option>
       </select>
-      <span class="text-danger" *ngIf="patientForm.controls.doctor.hasError('required')" >Không được để trống</span>
+      <span class="text-danger" *ngIf="patientForm.controls.doctor.hasError('required')">Không được để trống</span>
     </div>
     <div class="row m-2">
-      <button  class="btn-outline-warning m-2 col-lg-1" type="button" routerLink="/">Quay lại</button>
+      <button class="btn-outline-warning m-2 col-lg-1" type="button" routerLink="/">Quay lại</button>
       <button class="btn-outline-success m-2 col-lg-1" type="submit">Thếm mới</button>
     </div>
   </form>

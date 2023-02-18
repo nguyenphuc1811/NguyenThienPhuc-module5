@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class AddComponent implements OnInit {
   patientForm: FormGroup;
   doctors: Doctor[];
+  messError: string = "";
 
   constructor(private router: Router, private patientService: PatientService) {
     this.patientForm = new FormGroup({
@@ -24,8 +25,9 @@ export class AddComponent implements OnInit {
       reason: new FormControl('', [Validators.required]),
       solution: new FormControl('', [Validators.required]),
       doctor: new FormControl('', [Validators.required])
-    },[this.checkDate]);
+    }, [this.checkDate]);
     this.getDoctors();
+    this.messError = "";
   }
 
   ngOnInit(): void {
@@ -44,13 +46,17 @@ export class AddComponent implements OnInit {
 
   add() {
     if (this.patientForm.valid) {
-      this.patientService.addPatient(this.patientForm.value).subscribe();
-      alert("Thêm mới thành công");
-      this.router.navigateByUrl('');
+      this.patientService.addPatient(this.patientForm.value).subscribe(data => {
+        alert("Thêm mới thành công");
+        this.router.navigateByUrl('');
+      }, error => {
+        this.messError = "Lỗi thêm mới";
+      });
+
     }
   }
 
-  private checkDate(form : FormGroup) {
+  private checkDate(form: FormGroup) {
     const startDay = form.value.startDay;
     const endDay = form.value.endDay;
     return (new Date(startDay) > new Date(endDay)) ? {invalidDate: true} : null;
