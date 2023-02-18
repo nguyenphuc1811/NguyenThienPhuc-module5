@@ -15,7 +15,7 @@ export class EditComponent implements OnInit {
   patientForm: FormGroup;
   doctors: Doctor[];
   patient: Patient;
-
+  messError: string = "";
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private patientService: PatientService) {
     this.patientForm = new FormGroup({
       id: new FormControl(''),
@@ -34,6 +34,7 @@ export class EditComponent implements OnInit {
       this.patientService.findById(parseInt(id)).subscribe(patient => {
         this.patient = patient;
         this.patientForm.patchValue(this.patient)
+        this.messError = "";
       })
     })
   }
@@ -60,9 +61,12 @@ export class EditComponent implements OnInit {
 
   update() {
     if (this.patientForm.valid) {
-      this.patientService.update(this.patientForm.value).subscribe();
-      alert("Chỉnh sửa thành công");
-      this.router.navigateByUrl("");
+      this.patientService.update(this.patientForm.value).subscribe(data => {
+        alert("Chỉnh sửa thành công");
+        this.router.navigateByUrl("");
+      }, error => {
+        this.messError = "Chỉnh sửa không thành công";
+      });
     }
   }
 }

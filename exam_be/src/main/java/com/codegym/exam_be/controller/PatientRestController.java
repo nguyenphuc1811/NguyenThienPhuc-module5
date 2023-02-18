@@ -62,7 +62,11 @@ public class PatientRestController {
     }
 
     @PutMapping("patient/update")
-    public ResponseEntity<?> updatePatient(@RequestBody Patient patient) {
+    public ResponseEntity<?> updatePatient(@Validated @RequestBody Patient patient, BindingResult bindingResult) {
+        patient.validate(patient, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         patientService.update(patient.getMedicalCode(), patient.getPatientCode(), patient.getName(), patient.getStartDay(), patient.getEndDay(), patient.getReason(), patient.getSolution(), patient.getDoctor().getId(), patient.getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
