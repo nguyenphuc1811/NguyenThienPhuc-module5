@@ -28,6 +28,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
     @Query(value = "select * from `patient` where id = :id", nativeQuery = true)
     Patient findById(@Param("id") int id);
 
-    @Query(value = "update patient set medical_code = :medical_code,patient_code = :patient_code,name = :name,start_day= :start_day ,end_day = :end_day,reason = :reason,solution = :solution,doctor_id =: doctor_id where id = :id", nativeQuery = true)
+    @Modifying
+    @Query(value = "update `patient` set medical_code = :medicalCode,patient_code = :patientCode,name = :name,start_day= :startDay ,end_day = :endDay,reason = :reason,solution = :solution,doctor_id = :doctorId where id = :id", nativeQuery = true)
     void update(@Param("medicalCode") String medicalCode, @Param("patientCode") String patientCode, @Param("name") String name, @Param("startDay") String startDay, @Param("endDay") String endDay, @Param("reason") String reason, @Param("solution") String solution, @Param("doctorId") int doctorId, @Param("id") int id);
 }
