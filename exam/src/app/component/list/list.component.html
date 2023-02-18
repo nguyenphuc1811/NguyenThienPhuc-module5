@@ -1,0 +1,64 @@
+<div class="container-fluid mt-4">
+  <input #name class="input-group-lg" type="text" placeholder="Search Tên">
+  <select #doctor class="form-select-sm">
+    <option value="0">Bác sĩ điều trị</option>
+    <option *ngFor="let doctor of doctors" [value]="doctor.id">{{doctor.name}}</option>
+  </select>
+  <button class="btn btn-outline-primary" (click)="search(name.value,doctor.value)">Tìm kiếm</button>
+  <button class="btn-outline-success" routerLink="/add">Thêm Mới</button>
+</div>
+<table class="table-hover table" style="border: 1px">
+  <thead>
+  <tr>
+    <th>STT</th>
+    <th>Mã bệnh án</th>
+    <th>Mã bệnh nhân</th>
+    <th>Tên bệnh Nhân</th>
+    <th>Ngày nhập viện</th>
+    <th>Ngày ra viện</th>
+    <th>Lý do nhập viện</th>
+    <th>Phương pháp điều trị</th>
+    <th>Bác sĩ điều trị</th>
+    <th>Tác vụ</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let patient of patients; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{patient.medicalCode}}</td>
+    <td>{{patient.patientCode}}</td>
+    <td>{{patient.name}}</td>
+    <td>{{patient.startDay}}</td>
+    <td>{{patient.endDay}}</td>
+    <td>{{patient.reason}}</td>
+    <td>{{patient.solution}}</td>
+    <td>{{patient.doctor.name}}</td>
+        <td>
+          <button class="btn btn-outline-info" [routerLink]="['edit',patient.id]">Edit</button>
+        </td>
+    <td>
+      <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="deleteModal(patient)">Xóa
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa mã bệnh nhân <span class="text-danger"> {{patientCode}} </span>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="deleteConfirm(patient.id)">Có
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@ const routes: Routes = [
     path: 'customer/:id',
     component: CustomerEditComponent
   }, {
-    path: 'customer/add',
+    path: 'customer/customer/add',
     component: CustomerAddComponent
   }, {
     path: 'facility',

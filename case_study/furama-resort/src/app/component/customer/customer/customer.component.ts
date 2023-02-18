@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Customer} from "../../../model/customer/customer";
-import {CustomerService} from "../../../service/customer.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {Customer} from '../../../model/customer/customer';
+import {Component, OnInit, Output} from '@angular/core';
+import {CustomerService} from '../../../service/customer/customer.service';
+import {CustomerType} from '../../../model/customer/customer-type';
+
 
 @Component({
   selector: 'app-customer',
@@ -9,17 +10,30 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-  customer: Customer;
-  customerForm: FormGroup = new FormGroup({
-    id: new FormControl(),
-    name: new FormControl(),
-  });
+ @Output() customer: Customer;
+  customers: Customer[];
+  customerTypes: CustomerType[];
 
   constructor(private customerService: CustomerService) {
+    this.customerService.getAllCustomer('', 0).subscribe(customer => {
+      this.customers = customer;
+    });
+    this.customerService.getCustomerTypes().subscribe(data => {
+      this.customerTypes = data;
+    });
   }
 
   ngOnInit(): void {
-    this.customerService.getAll();
   }
 
+  search(value: string, value2: string) {
+    console.log(value2);
+    this.customerService.getAllCustomer(value, parseInt(value2)).subscribe(data => {
+      this.customers = data;
+    });
+  }
+
+  edit(customer: Customer) {
+    this.customer = customer;
+  }
 }

@@ -1,63 +1,67 @@
-<h2 class="d-flex justify-content-center text-danger">Thêm mới khách hàng</h2>
-<form>
-  <div class="m-4 row">
-    <div class="col-sm-2">Customer Type Name</div>
-    <select formControlName="customerType">
-      <option value="diamond">diamond</option>
-      <option value="member">member</option>
-    </select>
-  </div>
-  <div class="m-4 row">
-    <label  class="col-sm-2 col-form-label">Name: </label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" formControlName="name">
-      <p style="position: absolute" class="text-danger"></p>
+<div style="background: #e9f2ef">
+  <h2 class="d-flex justify-content-center text-danger">Thêm mới khách hàng</h2>
+  <form [formGroup]="reactiveForm" (ngSubmit)="submit()">
+    <div class="m-4 row">
+      <div class="col-sm-2">Customer Type Name:</div>
+      <select formControlName="customerType" class="col-sm-5 form-check-label btn-outline-info">
+        <option *ngFor="let item of customerTypes" [ngValue]="item">{{item.name}}</option>
+      </select>
     </div>
-  </div>
-  <div class="m-4 row">
-    <label class="col-sm-2 col-form-label">Date Of Birth: </label>
-    <div class="col-sm-10">
-      <input type="date" class="form-control" formControlName="dateOfBirth">
-      <p  style="position: absolute" class="text-danger"></p>
+    <div class="m-4 row">
+      <label class="col-sm-2 col-form-label">Name:<span
+        *ngIf="reactiveForm.controls.name.hasError('upCase') && reactiveForm.controls.name.dirty"
+        style="position: absolute" class="text-danger col-sm-10"> Phải viết hoa chữ cái đầu</span> </label>
+      <div>
+        <input type="text" class="form-control" formControlName="name">
+      </div>
     </div>
-  </div>
-  <div class="m-4 row">
-    <label class="col-sm-2">Gender: </label>
-    <div class="col-sm-10">
-      <label>
-        <input formControlName="gender" value="true" type="radio" >
-      </label>Nam
-      <label>
-        <input formControlName="gender" value="false" type="radio" >
-      </label>Nữ
+    <div class="m-4 row">
+      <label class="col-sm-2 col-form-label">Date Of Birth: </label>
+      <p style="position: absolute" class="text-danger col-sm-10"></p>
+      <div class="">
+        <input type="date" class="form-control" formControlName="dateOfBirth">
+      </div>
     </div>
-  </div>
-  <div class="m-4 row">
-    <label class="col-sm-2 col-form-label">ID Card: </label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" >
-      <p  style="position: absolute" class="text-danger"></p>
+    <div class="m-4 row">
+      <label class="col-sm-2">Gender: </label>
+      <div class="col-sm-10">
+        <label>
+          <input formControlName="gender" [value]="true" type="radio" [(ngModel)]="abc">
+        </label>Nam
+        <label>
+          <input formControlName="gender" [value]="false" type="radio">
+        </label>Nữ
+      </div>
     </div>
-  </div>
-  <div class="m-4 row">
-    <label  class="col-sm-2 col-form-label">Phone Number: </label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" >
-      <p  style="position: absolute" class="text-danger"></p>
+    <div class="m-4 row">
+      <label class="col-sm-2 col-form-label">ID Card: </label>
+      <p style="position: absolute" class="text-danger col-sm-10"></p>
+      <div class="">
+        <input type="text" class="form-control" formControlName="idCard">
+      </div>
     </div>
-  </div>
-  <div class="m-4 row">
-    <label class="col-sm-2 col-form-label">Email: </label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" >
-      <p  style="position: absolute" class="text-danger"></p>
+    <div class="m-4 row">
+      <label class="col-sm-2 col-form-label">Phone Number: </label>
+      <p style="position: absolute" class="text-danger col-sm-10"></p>
+      <div class="">
+        <input formControlName="phoneNumber" type="text" class="form-control">
+      </div>
     </div>
-  </div>
-  <div class="m-4 row">
-    <label class="col-sm-2 col-form-label">Address: </label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" >
+    <div class="m-4 row">
+      <label class="col-sm-2 col-form-label">Email: </label>
+      <p *ngIf="reactiveForm.controls.email.hasError('pattern') && reactiveForm.controls.email.dirty" style="position: absolute" class="text-danger col-sm-10">Nhập sai định dạng</p>
+      <div class="">
+        <input formControlName="email" type="text" class="form-control">
+      </div>
     </div>
-  </div>
-  <button type="submit" class="d-flex justify-content-center" style="margin: 0 auto">Save</button>
-</form>
+    <div class="m-4 row">
+      <label class="col-sm-2 col-form-label">Address: </label>
+      <p style="position: absolute" class="text-danger col-sm-10"></p>
+      <div class="">
+        <input type="text" formControlName="address" class="form-control">
+      </div>
+    </div>
+    <button type="submit" class="d-flex btn btn-outline-success justify-content-center" style="margin: 0 auto">Save
+    </button>
+  </form>
+</div>
